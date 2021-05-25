@@ -1,0 +1,16 @@
+-- Returns 26299 rows
+SELECT teachers.name AS teacher, students.name AS student, assignments.name AS assignment, (assistance_requests.completed_at - assistance_requests.started_at) AS duration
+FROM assistance_requests
+FULL OUTER JOIN assignments ON assignments.id = assistance_requests.assignment_id
+JOIN students ON students.id = assistance_requests.student_id
+JOIN teachers ON teachers.id = assistance_requests.teacher_id
+ORDER BY duration;
+
+-- Returns 20214 rows
+SELECT teachers.name AS teacher, students.name AS student, assignments.name AS assignment, (assistance_requests.completed_at - assistance_requests.started_at) AS duration
+FROM assistance_requests
+JOIN assignments ON assignments.id = assistance_requests.assignment_id
+JOIN students ON students.id = assistance_requests.student_id
+JOIN teachers ON teachers.id = assistance_requests.teacher_id
+ORDER BY duration;
+
